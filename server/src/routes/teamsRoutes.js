@@ -1,8 +1,8 @@
 const { Router } = require("express");
-const router = Router();
+const teamsRoutes = Router();
 
 const getTeamsHandler = require("../handllers/getTeamsHandler");
 
-router.get("/teams", getTeamsHandler);
+teamsRoutes.get("/teams", getTeamsHandler);
 
-module.exports = router;
+module.exports = teamsRoutes;
