@@ -3,6 +3,6 @@ const teamsRoutes = Router();
 
 const getTeamsHandler = require("../handllers/getTeamsHandler");
 
-teamsRoutes.get("/teams", getTeamsHandler);
+teamsRoutes.get("/", getTeamsHandler);
 
 module.exports = teamsRoutes;

@@ -1,6 +1,6 @@
 const getTeams = require("../controllers/getTeams");
 
-const getTeamsHandler = async (res, req) => {
+const getTeamsHandler = async (req, res) => {
   try {
     const allTeams = await getTeams();
     res.status(200).json(allTeams);

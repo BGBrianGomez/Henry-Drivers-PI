@@ -1,4 +1,5 @@
 const axios = require("axios");
+const {Op} = require("sequelize")
 const { Driver, Teams } = require("../db");
 
 const getDriverByName = async (name) => {
@@ -12,7 +13,7 @@ const getDriverByName = async (name) => {
         },
         Include: Teams
     })
-    const driverApi = await axios(`http://localhost:5000/drivers?name.forename=${name}`).data;
+    const driverApi = await axios(`http://localhost:5000/drivers/name?=${name}`).data;
     driver = [...driverDB, ...driverApi]
     driver = driver.slice(0,16)
     return driver;

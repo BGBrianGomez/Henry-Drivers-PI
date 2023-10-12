@@ -2,6 +2,7 @@ const axios = require("axios");
 const { Driver, Teams } = require("../db");
 
 const getDriverByID = async (id) => {
+  console.log("log de id", id);
   let driver;
   if (isNaN(id)) {
     driver = await Driver.findByPk(id, { Include: Teams });
@@ -19,4 +20,4 @@ const getDriverByID = async (id) => {
   return driver;
 };
 
-module.export = getDriverByID;
+module.exports = getDriverByID;
