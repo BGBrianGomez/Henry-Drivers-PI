@@ -1,16 +1,17 @@
 import React from "react";
 import {Link} from "react-router-dom";
 import styles from "./Landing.module.css"
+import bgImg from "../../assets/FondoLanding.jpg"
 
-const landing = ()=>{
+const Landing = ()=>{
     return(
-<div className={style.landing}>
-    <img src="src/assets/FondoLanding.jpg"></img>
-    <Link to="/home">
-    <button className={styles.button}>Ingresar</button>
+<div className={styles.landing}>
+    <img src={bgImg}/>
+    <Link className={styles.button} to="/home">
+    <button >Ingresar</button>
     </Link>
 </div>
     )
 }
 
-export default landing;
+export default Landing;

@@ -1,18 +1,24 @@
 .landing {
-    background-size: cover;
-    background-position: center;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  .button {
-    background-color: #0074d9;
-    color: #fff;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-  }
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: end;
+}
+
+.landing img {
+  position: relative;
+  width: 100vw;
+  height: 100%;
+  object-fit:cover;
+}
+
+.button {
+  bottom: 25px;
+  position: absolute;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
