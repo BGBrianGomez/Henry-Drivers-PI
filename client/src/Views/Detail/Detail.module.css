@@ -1,0 +1,23 @@
+.container{
+    background-color: rgba(33, 33, 7, 0.735);
+    flex-direction: row;
+    display: flex;
+}
+
+.info{
+    flex-direction: column;
+    width: 50%;
+    text-align: left;
+    margin: 40px;
+}
+
+.dni{
+    width: 50%;
+    flex-direction: column;
+}
+
+.img {
+    width: 300px;
+    border-radius: 5px;
+    margin-bottom: 5px;
+  }

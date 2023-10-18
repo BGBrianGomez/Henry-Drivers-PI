@@ -1,9 +1,12 @@
 import Card from "../Card/Card";
+import styles from "./Cards.module.css"
 
-const Cards = (drivers)=>{
+const Cards = ({drivers})=>{
+
+    const allDrivers = drivers
     return (
-        <div>
-            {drivers.map((driver)=>{<Card driver={driver}/>})}
+        <div className={styles.cardsContainer}>
+            {allDrivers?.map((driver)=>(<Card driver={driver} key={driver.id}/>))}
         </div>
     )
 }

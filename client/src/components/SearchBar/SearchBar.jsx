@@ -1,13 +1,14 @@
 import { getByName } from "../../Redux/Actions/actions";
-
-import { useState } from "react";
+import { useDispatch } from "react-redux";
+// import { useState } from "react";
 
 const SearchBar = ()=>{
+    const dispatch = useDispatch()
     // const [query, setQuery] = useState('');
 
     const handleInputChange = (e) => {
         let name = e.target.value
-        setTimeout(getByName(name), 1000);
+        setTimeout(dispatch(getByName(name)), 1000);
     }
 
     return (
