@@ -32,6 +32,10 @@ module.exports = (sequelize) => {
     dob:{
       type: DataTypes.DATE,
       allowNull: false,
+    },
+    createdinDB:{
+      type: DataTypes.BOOLEAN,
+      allowNull: false
     }
   });
 };

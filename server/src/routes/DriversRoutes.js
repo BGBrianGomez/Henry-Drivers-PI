@@ -9,6 +9,6 @@ const postDriverHandler = require("../handllers/postDriversHandler");
 driversRoutes.get("/", getAllDriversHandller);
 driversRoutes.get("/:id", getDriverByIdHandller);
 // driversRoutes.get("/", getDriverByNameHandller);
-driversRoutes.post("/", postDriverHandler);
+driversRoutes.post("/form", postDriverHandler);
 
 module.exports = driversRoutes;

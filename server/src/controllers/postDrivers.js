@@ -1,10 +1,10 @@
 const {Driver, Teams} = require("../db");
 
-const postDrivers = async(forename, surname, description, image, dob, nationality)=>{
+const postDrivers = async(forename, surname, description, image, dob, nationality, createdinDB)=>{
     Driver.findOrCreate({
         where: {forename,
         surname},
-        defaults: {forename, surname, description,image,dob,nationality}
+        defaults: {forename, surname, description,image,dob,nationality, createdinDB}
     })
     .then(([user,created])=>{
         if(created){
