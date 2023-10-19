@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getAllDrivers } from "../../Redux/Actions/actions";
+import { getAllDrivers, getTeams } from "../../Redux/Actions/actions";
 import Cards from "../../components/Cards/Cards";
 import NavBar from "../../components/NavBar/NavBar";
 import Paginado from "../../components/Paginado/Paginado";
@@ -17,16 +17,18 @@ const Home = () => {
     indexOfFirstDriver,
     indexOfLastDriver
   );
+  
+useEffect(()=>{
+  dispatch(getTeams())
+  dispatch(getAllDrivers())
+},[dispatch])
+
 
   const paginado = (pageNumber) => {
     setCurrentPage(pageNumber);
   };
 
-  useEffect(() => {
-    if (!filtredDrivers.length) {
-      dispatch(getAllDrivers());
-    }
-  }, [dispatch]);
+
 
   window.scrollTo(0, 0);
   return (
@@ -42,6 +44,7 @@ const Home = () => {
           allDrivers={filtredDrivers}
           driverPerPage={driverPerPage}
           paginado={paginado}
+          currentPage={currentPage}
         />
       </div>
     </div>

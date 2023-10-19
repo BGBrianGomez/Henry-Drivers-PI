@@ -1,6 +1,6 @@
 .card-container {
-    background-color: #f0f0f0;
-    border: 1px solid #ddd;
+    background-color: #161A1B;
+    border: 1px solid #B71C1C;
     border-radius: 5px;
     padding: 10px;
     margin: 10px;
@@ -30,14 +30,14 @@
     font-size: 18px;
     font-weight: bold;
     margin-bottom: 10px;
-    color: black;
+    color: #F5F3F4;
   }
   
   /* Estilos para el contenido del Card */
   .card-content {
     font-size: 14px;
     line-height: 1.4;
-    color: black;
+    color: #F5F3F4;
   }
   
   /* Estilos para una imagen en el Card, si es necesario */

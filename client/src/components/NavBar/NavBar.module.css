@@ -1,0 +1,68 @@
+.totalConteiner{
+    flex-direction: row;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 5px;
+    background-color: #161A1D;
+}
+
+.img{
+    width: 70px;
+  height: auto;
+  margin-right: 5px;
+  margin-left: 10px;
+}
+
+.totalConteiner select {
+    margin: 0 10px;
+  }
+
+  .totalConteiner button {
+    text-decoration: none;
+    margin: 0 10px;
+    background-color: #161A1D;
+    color: #fff; 
+    border: none;
+    border-radius: 5px;
+    padding: 10px; 
+    transition: all 0.1s ease; 
+  }
+  
+  /* Cambia el color de fondo al hacer hover */
+  .totalConteiner button:hover {
+    background-color: #0B090A; /* Fondo en tono más oscuro al hacer hover */
+    border: 2px solid #B71C1C; /* Restaura el borde en estado hover */
+  }
+  
+  /* Estilo cuando el botón está enfocado */
+  .totalConteiner button:focus {
+    outline:black; /* Elimina el borde de enfoque predeterminado */
+    border: 2px solid #FF1744; /* Borde en tono rojo más brillante al enfocar */
+    color: #FF1744; /* Texto en tono rojo más brillante al enfocar */
+  }
+
+  .totalConteiner select {
+    background-color: #161A1D; /* Fondo en tono gris oscuro */
+    color: #fff; /* Color del texto en blanco */
+    border: 2px solid #EE0000; /* Borde en un tono de rojo más oscuro */
+    border-radius: 5px; /* Bordes redondeados */
+    padding: 8px; /* Relleno interno para aumentar el tamaño */
+    width: 200px; /* Ancho fijo (ajústalo según tus necesidades) */
+    transition: all 0.3s ease; /* Efecto de transición suave */
+  }
+  
+  .totalConteiner select::selection {
+    background-color: #161A1D; /* Cambia el color de fondo de la selección a #161A1D */
+  }
+
+  /* Cambia el color de fondo al hacer hover */
+  .totalConteiner select:hover {
+    background-color: #0B090A; /* Fondo en tono más oscuro al hacer hover */
+  }
+  
+  /* Estilo cuando el select está enfocado */
+  .totalConteiner select:focus {
+    outline: none; /* Elimina el borde de enfoque predeterminado */
+    border: 2px solid #FF1744; /* Borde en tono rojo más brillante al enfocar */
+  }

@@ -1,5 +1,6 @@
 import { getByName } from "../../Redux/Actions/actions";
 import { useDispatch } from "react-redux";
+import styles from "../SearchBar/Search.module.css"
 // import { useState } from "react";
 
 const SearchBar = ()=>{
@@ -12,8 +13,8 @@ const SearchBar = ()=>{
     }
 
     return (
-        <div>
-            <input type="text" placeholder="buscar..." onChange={handleInputChange} />
+        <div  >
+            <input className={styles.search} type="text" placeholder="Busca un corredor..." onChange={handleInputChange} />
         </div>
     )
 }

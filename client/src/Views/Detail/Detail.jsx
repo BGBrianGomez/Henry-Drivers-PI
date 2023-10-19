@@ -1,8 +1,8 @@
 import axios from "axios";
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import NavBar from "../../components/NavBar/NavBar";
-import styles from "./Detail.module.css"
+import styles from "./Detail.module.css";
 
 const Detail = () => {
   const { id } = useParams();
@@ -50,35 +50,35 @@ const Detail = () => {
     }
   };
 
-  if(!driver || !driver.name) {
-    return(
-        <div>
-            <p>No se encontro el conductor</p>
-        </div>
-    )
+  if (!driver || !driver.name) {
+    return (
+      <div>
+        <p>No se encontro el conductor</p>
+      </div>
+    );
   }
 
-  const {forename, surname} = driver.name
+  const { forename, surname } = driver.name;
 
-console.log(driver);
+  console.log(driver);
   return (
     <div>
       <NavBar />
-    <div className={styles.container} >
-      {/* DIV GENERAL, FLEX ROW, FOTO FONDO DIFUMINADA */}
-      <div className={styles.info}>
-        <h3>{driver.id}</h3>
-        <h3>{driver.nationality}</h3>
-        <h3>{driver.dob}</h3>
-        <h3>{formatTeams(driver.teams)}</h3>
-        <h3>{driver.description}</h3>
-        {/* id, nacionalidad, etc, FLEX COL*/}</div>
-      <div className={styles.dni}>
-        <img src={driver.image} className={styles.img} />
-        <h2>{forename}</h2>
-        <h2>{surname}</h2>
-        {/* IMG  y NOMBRE APELLIDO, FLEX COL*/}</div>
-    </div>
+      <div className={styles.container}>
+        <div className={styles.info}>
+          <h3>{driver.id}</h3>
+          <h3>{driver.nationality}</h3>
+          <h3>{driver.dob}</h3>
+          <h3>{formatTeams(driver.teams)}</h3>
+          <h3>{driver.description}</h3>
+        </div>
+        <div className={styles.dni}>
+          <img src={driver.image} className={styles.img} />
+          <h2>
+            {forename} {surname}
+          </h2>
+        </div>
+      </div>
     </div>
   );
 };

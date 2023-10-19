@@ -3,6 +3,8 @@ import {
   GET_DRIVERS,
   FILTER_ORIGIN,
   ORDER_DRIVER,
+  GET_TEAMS,
+  FILTER_TEAM,
 } from "../Actions/actionTypes";
 
 const initialState = {
@@ -27,8 +29,8 @@ const reducer = (state = initialState, action) => {
       const origin = action.payload;
       const drivers = state.allDrivers;
 
-      console.log("ORIGIN", origin);
 
+      
       const filtered =
         origin === "database"
           ? drivers.filter((driver) => driver.createdinDB === true)
@@ -42,8 +44,10 @@ const reducer = (state = initialState, action) => {
     case ORDER_DRIVER:
       const order = action.payload;
 
+      state.filtredDrivers = [];
+
       if (order === "A-Z") {
-        const orderAZ = [...state.filtredDrivers].sort((a, b) => {
+        const orderAZ = [...state.allDrivers].sort((a, b) => {
           const nameA = a.forename.toLowerCase();
           const nameB = b.forename.toLowerCase();
           if (nameA < nameB) {
@@ -56,7 +60,7 @@ const reducer = (state = initialState, action) => {
         });
         return { ...state, filtredDrivers: orderAZ };
       } else if (order === "Z-A") {
-        const orderZA = [...state.filtredDrivers].sort((a, b) => {
+        const orderZA = [...state.allDrivers].sort((a, b) => {
           const nameA = a.forename.toLowerCase();
           const nameB = b.forename.toLowerCase();
           if (nameA > nameB) {
@@ -69,22 +73,33 @@ const reducer = (state = initialState, action) => {
         });
         return { ...state, filtredDrivers: orderZA };
       } else if (order === "dobA") {
-        const orderDOBA = [...state.filtredDrivers].sort(
-          (a, b) => {const dateA = new Date(a.dob.split('-')[2]);
-          const dateB = new Date(b.dob.split('-')[2]);
-          return dateA - dateB;}
-        );
+        const orderDOBA = [...state.allDrivers].sort((a, b) => {
+          const dateA = new Date(a.dob.split("-")[2]);
+          const dateB = new Date(b.dob.split("-")[2]);
+          return dateA - dateB;
+        });
         return { ...state, filtredDrivers: orderDOBA };
       } else if (order === "dobD") {
-        const orderDOBD = [...state.filtredDrivers].sort(
-          (a, b) => {const dateA = new Date(a.dob.split('-')[2]);
-          const dateB = new Date(b.dob.split('-')[2]);
-          return dateB - dateA;}
-        );
+        const orderDOBD = [...state.allDrivers].sort((a, b) => {
+          const dateA = new Date(a.dob.split("-")[2]);
+          const dateB = new Date(b.dob.split("-")[2]);
+          return dateB - dateA;
+        });
         return { ...state, filtredDrivers: orderDOBD };
       } else {
         return state;
       }
+    case FILTER_TEAM:
+      state.filtredDrivers = [];
+      const filtrados = state.allDrivers.filter((driver) => {
+        if (driver.teams) {
+          return driver.teams.indexOf(action.payload) !== -1;
+        }
+        return false;
+      });
+      return { ...state, filtredDrivers: filtrados };
+    case GET_TEAMS:
+      return { ...state, allTeams: action.payload };
     default:
       return state;
   }
