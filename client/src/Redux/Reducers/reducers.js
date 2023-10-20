@@ -50,28 +50,17 @@ const reducer = (state = initialState, action) => {
         const orderAZ = [...state.allDrivers].sort((a, b) => {
           const nameA = a.forename.toLowerCase();
           const nameB = b.forename.toLowerCase();
-          if (nameA < nameB) {
-            return -1;
-          }
-          if (nameA > nameB) {
-            return 1;
-          }
-          return 0;
+          return nameA.localeCompare(nameB, undefined, { sensitivity: 'base' });
         });
         return { ...state, filtredDrivers: orderAZ };
       } else if (order === "Z-A") {
         const orderZA = [...state.allDrivers].sort((a, b) => {
           const nameA = a.forename.toLowerCase();
           const nameB = b.forename.toLowerCase();
-          if (nameA > nameB) {
-            return -1;
-          }
-          if (nameA < nameB) {
-            return 1;
-          }
-          return 0;
+          return nameB.localeCompare(nameA, undefined, { sensitivity: 'base' });
         });
         return { ...state, filtredDrivers: orderZA };
+      
       } else if (order === "dobA") {
         const orderDOBA = [...state.allDrivers].sort((a, b) => {
           const dateA = new Date(a.dob.split("-")[2]);

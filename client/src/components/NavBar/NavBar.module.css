@@ -3,8 +3,10 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 5px;
+    padding: 2px;
     background-color: #161A1D;
+    width: 1257px;
+    border-bottom: 2px solid #B71C1C;
 }
 
 .img{

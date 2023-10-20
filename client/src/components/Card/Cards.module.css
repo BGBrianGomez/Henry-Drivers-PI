@@ -5,12 +5,18 @@
     padding: 10px;
     margin: 10px;
     width: 350px;
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1)
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
   }
   
   .linkContainer {
     display: flex;
     flex-direction: row;
+    width: 100%;
+  }
+  .imgContainer { 
+    width: 100%;
+    height: 100%;
   }
 
   .infoContainer {
@@ -19,18 +25,16 @@
     display: flex;
     flex-direction: column;
     color: black;
+    margin-top: 50px;
   }
 
-  .imgContainer { 
-    width: 100%;
-    height: 100%;
-  }
   /* Estilos para el título del Card */
   .card-title {
     font-size: 18px;
     font-weight: bold;
-    margin-bottom: 10px;
+    margin-bottom: 1px;
     color: #F5F3F4;
+    text-decoration: underline;
   }
   
   /* Estilos para el contenido del Card */
@@ -38,7 +42,10 @@
     font-size: 14px;
     line-height: 1.4;
     color: #F5F3F4;
+    margin-top: 60px;
+    margin-left: 20px;
   }
+
   
   /* Estilos para una imagen en el Card, si es necesario */
   .card-image {
@@ -47,4 +54,5 @@
     width: 250px;
     object-fit: cover;
     margin-top: 10px;
+    margin-left: 10px;
   }

@@ -2,8 +2,8 @@
     background-color: #161A1D; /* Fondo en tono rojo */
     border: 2px solid #EE0000; /* Borde en un tono de rojo más oscuro */
     color: #EE0000; /* Texto en un tono de rojo más oscuro */
-    border-radius: 20px; /* Bordes redondeados */
-    padding: 10px; /* Relleno interno */
+    border-radius: 5px; /* Bordes redondeados */
+    padding: 8px; /* Relleno interno */
     width: 200px; /* Ancho fijo (ajústalo según tus necesidades) */
     transition: all 0.3s ease;
   }
@@ -15,7 +15,7 @@
 .search:focus {
     outline: none; /* Elimina el borde de enfoque predeterminado */
     border: 2px solid #EE0000; /* Borde en tono rojo más brillante al enfocar */
-    color: #FF1744; /* Texto en tono rojo más brillante al enfocar */
+    color: #fff; /* Texto en tono rojo más brillante al enfocar */
   }
 
   
