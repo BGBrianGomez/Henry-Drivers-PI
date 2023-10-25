@@ -10,7 +10,7 @@ import {
   validateForename,
   validateImage,
   validateNationality,
-  validateSurname
+  validateSurname,
 } from "./validations";
 
 const Form = () => {
@@ -45,15 +45,13 @@ const Form = () => {
   });
   const [formValid, setFormValid] = useState(false);
 
-
   const handleChange = (e) => {
     const { name, value } = e.target;
-  
-   
-   setDriver({ ...driver, [name]: value });
-  
+
+    setDriver({ ...driver, [name]: value });
+
     let errorMessage = "";
-  
+
     if (name === "forename") {
       errorMessage = validateForename(value);
     } else if (name === "surname") {
@@ -67,24 +65,12 @@ const Form = () => {
     } else if (name === "image") {
       errorMessage = validateImage(value);
     }
-  
+
     setError({ ...error, [name]: errorMessage });
-    console.log(error)
+    console.log("error", error);
     validateForm();
   };
 
-  const validateForm = () => {
-    const isValid =
-      (error.forename !== null && error.forename.length < 1 ) &&
-      ( error.surname !== null && error.surname.length < 1)&&
-      (error.dob !== null && error.dob.length <1)&&
-      ( error.description !== null && error.description.length <1)&&
-      (error.nationality !== null && error.nationality.length <1 )&&
-      (error.image !== null && error.image.length <1  );
-
-    setFormValid(isValid);
-  };
-  
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(addDriver(driver));
@@ -107,18 +93,42 @@ const Form = () => {
     let teamsSelected = "";
 
     for (let i = 0; i < options.length; i++) {
-      if (options[i].selected && !selectedTeams.split(",").includes(options[i].value)) {
+      if (
+        options[i].selected &&
+        !selectedTeams.split(",").includes(options[i].value)
+      ) {
         const newTeam = options[i].value + ", ";
         teamsSelected = selectedTeams.concat(newTeam);
         setSelectedTeams(teamsSelected);
+        setDriver({ ...driver, teams: selectedTeams });
+        setError({ ...error, teams: "" });
         let selectedTeamsRef = teamsSelected;
         selectedTeamsRef = selectedTeamsRef.split(",");
         selectedTeamsRef.pop();
         selectedTeamsRef = selectedTeamsRef.join(",");
         setShowTeams(selectedTeamsRef);
+        console.log("error en teams", error);
       }
     }
+    validateForm()
   };
+
+  const validateForm = () => {
+    if (
+      error.surname === "" &&
+      error.forename === "" &&
+      error.description === "" &&
+      error.dob === "" &&
+      error.nationality === "" &&
+      error.image === ""
+    ) {
+      setFormValid(true);
+    }
+  };
+
+  console.log("valid", formValid);
+
+  console.log("driver", driver);
 
   return (
     <div key="">
@@ -167,7 +177,9 @@ const Form = () => {
                 onChange={handleChange}
                 placeholder="Description"
               />
-              {error.description && <div className="error">{error.description}</div>}
+              {error.description && (
+                <div className="error">{error.description}</div>
+              )}
               <input
                 key={"driver-nationality"}
                 type="text"
@@ -176,7 +188,9 @@ const Form = () => {
                 onChange={handleChange}
                 placeholder="Nationality"
               />
-              {error.nationality && <div className="error">{error.nationality}</div>}
+              {error.nationality && (
+                <div className="error">{error.nationality}</div>
+              )}
               <input
                 key={"driver-img"}
                 type="text"
@@ -187,9 +201,14 @@ const Form = () => {
               />
               {error.image && <div className="error">{error.image}</div>}
             </div>
-            <select value={"defaultValue"} name="teams" id="teams" onChange={handleTeamSelection}>
-              <option value="defaultValue" disabled>          
-              Choose your teams
+            <select
+              value={"defaultValue"}
+              name="teams"
+              id="teams"
+              onChange={handleTeamSelection}
+            >
+              <option value="defaultValue" disabled>
+                Choose your teams
               </option>
               {teams.map((team, index) => (
                 <option key={team + index} value={team}>
@@ -198,7 +217,11 @@ const Form = () => {
               ))}
             </select>
             <div className={styles.teamselected}>
-              {showTeams.length > 0 ? <div>{showTeams}</div> : <div>Your teams</div>}
+              {showTeams.length > 0 ? (
+                <div>{showTeams}</div>
+              ) : (
+                <div>Your teams</div>
+              )}
             </div>
           </div>
           <div>
