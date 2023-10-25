@@ -24,6 +24,7 @@ module.exports = (sequelize) => {
     image:{
       type: DataTypes.STRING,
       allowNull: false,
+      length: 500,
     },
     nationality:{
       type: DataTypes.STRING,

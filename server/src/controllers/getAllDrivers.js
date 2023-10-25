@@ -26,7 +26,7 @@ const getAllDrivers = async (name) => {
       image: driver.image.url || noimagen,
       nationality: driver.nationality,
       dob: driver.dob,
-      teams: driver.teams,
+      teams: driver.teams || "Does not have defined teams",
       createdinDB: false,
     };
   });
