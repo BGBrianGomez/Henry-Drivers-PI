@@ -37,6 +37,9 @@ module.exports = (sequelize) => {
     createdinDB:{
       type: DataTypes.BOOLEAN,
       allowNull: false
+    },
+    teams: {
+      type: DataTypes.STRING
     }
   });
 };
