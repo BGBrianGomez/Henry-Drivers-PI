@@ -28,7 +28,6 @@
     margin-top: 50px;
   }
 
-  /* Estilos para el título del Card */
   .card-title {
     font-size: 18px;
     font-weight: bold;
@@ -37,22 +36,25 @@
     text-decoration: underline;
   }
   
-  /* Estilos para el contenido del Card */
   .card-content {
     font-size: 14px;
     line-height: 1.4;
     color: #F5F3F4;
     margin-top: 60px;
-    margin-left: 20px;
+    margin-left: 5px;
+    width: 150px;
+    height: 100px;
+    text-align: center;
+
+word-wrap: break-word;
   }
 
   
-  /* Estilos para una imagen en el Card, si es necesario */
   .card-image {
     max-width: 100%;
     height: 350px;
     width: 250px;
     object-fit: cover;
     margin-top: 10px;
-    margin-left: 10px;
+    border-radius: 5px;
   }

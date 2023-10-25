@@ -66,9 +66,9 @@ export const validateImage = (value) => {
     return "La imagen debe ser una URL";
   }
 
-  const urlPattern = /^(https?:\/\/)?[\w.-]+\.[a-z]{2,4}\/?[\w]*#?[\w]*$/;
+  const urlPattern = /^(https?|ftp):\/\/[^\s/$.?#].[^\s]*$/;
 
-  if (!urlPattern.test(value) || value.length > 255) {
+  if (!urlPattern.test(value) ) {
     return "La imagen no es una URL válida";
   }
 

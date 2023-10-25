@@ -66,10 +66,10 @@ const Detail = () => {
       <NavBar />
       <div className={styles.container}>
         <div className={styles.info}>
-          <h3>{driver.id}</h3>
-          <h3>{driver.nationality}</h3>
-          <h3>{driver.dob}</h3>
-          <h3>{formatTeams(driver.teams)}</h3>
+          <h3>ID: {driver.id}</h3>
+          <h3>Nationality: {driver.nationality}</h3>
+          <h3>Date of birth: {driver.dob}</h3>
+          <h3>Teams: {formatTeams(driver.teams)}</h3>
           <h3>{driver.description}</h3>
         </div>
         <div className={styles.dni}>

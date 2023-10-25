@@ -4,7 +4,14 @@ import NavBar from "../../components/NavBar/NavBar";
 import { addDriver, getTeams } from "../../Redux/Actions/actions";
 import styles from "./Form.module.css";
 import { useNavigate } from "react-router-dom";
-import { validateDescription, validateDob,validateForename,validateImage,validateNationality,validateSurname } from "./validations";
+import {
+  validateDescription,
+  validateDob,
+  validateForename,
+  validateImage,
+  validateNationality,
+  validateSurname
+} from "./validations";
 
 const Form = () => {
   const dispatch = useDispatch();
@@ -28,48 +35,56 @@ const Form = () => {
     createdinDB: true,
   });
   const [error, setError] = useState({
-    forename: "",
-    surname: "",
-    dob: "",
-    nationality: "",
-    description: "",
-    teams: "",
-    image: "",
-  })
+    forename: null,
+    surname: null,
+    dob: null,
+    nationality: null,
+    description: null,
+    teams: null,
+    image: null,
+  });
   const [formValid, setFormValid] = useState(false);
 
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setDriver({ ...driver, [name]: value });
-
+  
+   
+   setDriver({ ...driver, [name]: value });
+  
+    let errorMessage = "";
+  
     if (name === "forename") {
-      const forenameError = validateForename(value);
-      setError({ ...error, forename: forenameError });
+      errorMessage = validateForename(value);
     } else if (name === "surname") {
-      const surnameError = validateSurname(value);
-      setError({ ...error, surname: surnameError });
+      errorMessage = validateSurname(value);
     } else if (name === "dob") {
-      const dobError = validateDob(value);
-      setError({ ...error, dob: dobError });
+      errorMessage = validateDob(value);
     } else if (name === "description") {
-      const descriptionError = validateDescription(value);
-      setError({ ...error, description: descriptionError });
-    } else if(name === "nationality") {
-      const nationalityError = validateNationality(value);
-      setError({...error, nationality: nationalityError})
+      errorMessage = validateDescription(value);
+    } else if (name === "nationality") {
+      errorMessage = validateNationality(value);
     } else if (name === "image") {
-      const imageError = validateImage(value);
-      setError({ ...error, image: imageError });
-    }   const allFieldValid = forenameError === "" &&
-    surnameError === "" &&
-    dobError === "" &&
-    descriptionError === "" &&
-    nationalityError === "" &&
-    imageError === "";
-    setFormValid(allFieldValid)
+      errorMessage = validateImage(value);
+    }
+  
+    setError({ ...error, [name]: errorMessage });
+    console.log(error)
+    validateForm();
   };
 
+  const validateForm = () => {
+    const isValid =
+      (error.forename !== null && error.forename.length < 1 ) &&
+      ( error.surname !== null && error.surname.length < 1)&&
+      (error.dob !== null && error.dob.length <1)&&
+      ( error.description !== null && error.description.length <1)&&
+      (error.nationality !== null && error.nationality.length <1 )&&
+      (error.image !== null && error.image.length <1  );
+
+    setFormValid(isValid);
+  };
+  
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(addDriver(driver));
@@ -87,19 +102,15 @@ const Form = () => {
     navigate("/home");
   };
 
-  let teamsSelected = "";
   const handleTeamSelection = (e) => {
     const options = e.target.options;
+    let teamsSelected = "";
+
     for (let i = 0; i < options.length; i++) {
-      if (
-        options[i].selected &&
-        !selectedTeams.split(",").includes(options[i].value)
-      ) {
+      if (options[i].selected && !selectedTeams.split(",").includes(options[i].value)) {
         const newTeam = options[i].value + ", ";
         teamsSelected = selectedTeams.concat(newTeam);
         setSelectedTeams(teamsSelected);
-        // selectedTeams = []
-        setDriver({ ...driver, teams: selectedTeams });
         let selectedTeamsRef = teamsSelected;
         selectedTeamsRef = selectedTeamsRef.split(",");
         selectedTeamsRef.pop();
@@ -118,67 +129,67 @@ const Form = () => {
         <div className={styles["form-container"]}>
           <div>
             <div className={styles.inputsIzq}>
-            <input
-              key={"driver-forename"}
-              type="text"
-              name="forename"
-              value={driver.forename}
-              onChange={handleChange}
-              placeholder="Nombre"
-              className={error.forename ? "error" : ""}
-            />
-            {error.forename && <div className="error">{error.forename}</div>}
-            <input
-              key={"driver-surname"}
-              type="text"
-              name="surname"
-              value={driver.surname}
-              onChange={handleChange}
-              placeholder="Apellido"
-            />
-            {error.surname && <div className="error">{error.surname}</div>}
-            <input
-              key={"driver-dob"}
-              type="text"
-              name="dob"
-              value={driver.dob}
-              onChange={handleChange}
-              placeholder="Fecha de nacimiento (DD-MM-YYYY)"
-            />
-            {error.dob && <div className="error">{error.dob}</div>}
+              <input
+                key={"driver-forename"}
+                type="text"
+                name="forename"
+                value={driver.forename}
+                onChange={handleChange}
+                placeholder="Name"
+                className={error.forename ? "error" : ""}
+              />
+              {error.forename && <div className="error">{error.forename}</div>}
+              <input
+                key={"driver-surname"}
+                type="text"
+                name="surname"
+                value={driver.surname}
+                onChange={handleChange}
+                placeholder="Surname"
+              />
+              {error.surname && <div className="error">{error.surname}</div>}
+              <input
+                key={"driver-dob"}
+                type="text"
+                name="dob"
+                value={driver.dob}
+                onChange={handleChange}
+                placeholder="Date of birth (DD-MM-YYYY)"
+              />
+              {error.dob && <div className="error">{error.dob}</div>}
             </div>
             <div className={styles.inputsDer}>
-            <input
-              key={"driver-description"}
-              type="text"
-              name="description"
-              value={driver.description}
-              onChange={handleChange}
-              placeholder="Descripción"
-            />
-            {error.description && <div className="error">{error.description}</div>}
-            <input
-              key={"driver-nationality"}
-              type="text"
-              name="nationality"
-              value={driver.nationality}
-              onChange={handleChange}
-              placeholder="Nacionalidad"
-            />
-            {error.nationality && <div className="error">{error.nationality}</div>}
-            <input
-              key={"driver-img"}
-              type="text"
-              name="image"
-              value={driver.image}
-              onChange={handleChange}
-              placeholder="URL de la imagen"
-            />
-            {error.image && <div className="error">{error.image}</div>}
+              <input
+                key={"driver-description"}
+                type="text"
+                name="description"
+                value={driver.description}
+                onChange={handleChange}
+                placeholder="Description"
+              />
+              {error.description && <div className="error">{error.description}</div>}
+              <input
+                key={"driver-nationality"}
+                type="text"
+                name="nationality"
+                value={driver.nationality}
+                onChange={handleChange}
+                placeholder="Nationality"
+              />
+              {error.nationality && <div className="error">{error.nationality}</div>}
+              <input
+                key={"driver-img"}
+                type="text"
+                name="image"
+                value={driver.image}
+                onChange={handleChange}
+                placeholder="URL image"
+              />
+              {error.image && <div className="error">{error.image}</div>}
             </div>
-            <select name="teams" id="teams" onChange={handleTeamSelection}>
-              <option value="" disabled selected>
-                Elije tus equipos
+            <select value={"defaultValue"} name="teams" id="teams" onChange={handleTeamSelection}>
+              <option value="defaultValue" disabled>          
+              Choose your teams
               </option>
               {teams.map((team, index) => (
                 <option key={team + index} value={team}>
@@ -187,15 +198,13 @@ const Form = () => {
               ))}
             </select>
             <div className={styles.teamselected}>
-              {showTeams.length > 0 ? (
-                <div>{showTeams}</div>
-              ) : (
-                <div>Tus equipos</div>
-              )}
+              {showTeams.length > 0 ? <div>{showTeams}</div> : <div>Your teams</div>}
             </div>
           </div>
           <div>
-            <button type="submit" disabled={!formValid}>Agregar Conductor</button>
+            <button type="submit" disabled={!formValid}>
+              Add driver
+            </button>
           </div>
         </div>
       </form>

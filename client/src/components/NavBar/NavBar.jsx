@@ -26,11 +26,17 @@ const teamsFilter = (e)=>{
   dispatch(filterByTeam(option))
 }
 
+const handleHomeButton = () =>{
+  if(location.pathname === "/home"){
+    window.location.reload();
+  }
+}
+
   return (
     <div className={styles.totalConteiner}>
       <img src={logof1} className={styles.img}/>
       <Link to="/home">
-        <button>Home</button>
+        <button onClick={handleHomeButton} >Home</button>
       </Link>
       <Link to="/form">
         <button>Form</button>
@@ -43,26 +49,27 @@ const teamsFilter = (e)=>{
               name="team-filter"
               id="team-filter"
               onChange={(e)=> teamsFilter(e)}
+              defaultValue={"defaultoption"}
             >
-              <option value="" disabled selected>Selecciona un equipo</option>
+              <option value="defaultoption" disabled >Select a team</option>
               {teams.map((team, index) => (
                 <option key={index} value={team}>
                   {team}
                 </option>
               ))}
             </select>
-        <select onChange={(e) => filter(e)}>
-        <option value="" disabled selected>Selecciona una opción</option>
-          <option value="all">Todos</option>
-          <option value="database">Base de Datos</option>
+        <select onChange={(e) => filter(e)} defaultValue={"optiondefault"}>
+        <option value="optiondefault" disabled>Select a option</option>
+          <option value="all">All</option>
+          <option value="database">Data base</option>
           <option value="API">API</option>
         </select>
         <select value="select"onChange={(e) => order(e)}>
           <option value="select" disabled>
-            Seleccione una opcion
+          Select a option
           </option>
-          <option value="A-Z">Alfabetico A-Z</option>
-          <option value="Z-A">Alfabetico Z-A</option>
+          <option value="A-Z">A-Z</option>
+          <option value="Z-A">Z-A</option>
           <option value="dobA">Dob(Asc)</option>
           <option value="dobD">Dob(Desc)</option>
         </select>
