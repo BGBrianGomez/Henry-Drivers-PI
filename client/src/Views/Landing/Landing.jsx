@@ -7,8 +7,10 @@ const Landing = ()=>{
     return(
 <div className={styles.landing}>
     <img src={bgImg}/>
-    <Link className={styles.button} to="/home">
-    <button >Ingresar</button>
+    <Link  to="/home">
+        <div className={styles.buttonContainer}>
+    <button className={styles.button}>Ingresar</button>
+        </div>
     </Link>
 </div>
     )

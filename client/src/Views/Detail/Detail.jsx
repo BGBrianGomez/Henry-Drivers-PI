@@ -3,9 +3,12 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import NavBar from "../../components/NavBar/NavBar";
 import styles from "./Detail.module.css";
+import { useSelector } from "react-redux";
 
 const Detail = () => {
   const { id } = useParams();
+
+  const allDrivers = useSelector(state => state.allDrivers)
 
   const [driver, setDriver] = useState({});
 
@@ -13,16 +16,23 @@ const Detail = () => {
     let formattedData = {};
     const fetchData = async () => {
       try {
-        const response = await axios.get(`http://localhost:3001/drivers/${id}`);
-        const data = response.data;
+        let response;
+        response = await axios.get(`http://localhost:3001/drivers/${id}`);
+        response = response.data;
+        if(!response){
+          response = allDrivers.find(driver => driver.id === id)
+        }
+        const data = response;
 
-        if (Object.keys(data).length === 0) {
+        if (!data) {
           setDriver(null);
         } else {
-          if (data.createInDb) {
+          if (data.createdinDB) 
+          {
             formattedData = {
               ...data,
               image: data.image,
+              dob: data.dob.split("T")[0]
             };
           } else {
             formattedData = {
@@ -30,6 +40,7 @@ const Detail = () => {
               image: data.image.url,
             };
           }
+
           setDriver(formattedData);
         }
       } catch (error) {
@@ -40,6 +51,7 @@ const Detail = () => {
     fetchData();
   }, [id]);
 
+  console.log("driver", driver);
   const formatTeams = (teams) => {
     if (typeof teams === "string") {
       return teams;
@@ -50,21 +62,25 @@ const Detail = () => {
     }
   };
 
-  if (!driver || !driver.name) {
-    return (
-      <div>
-        <p>No se encontro el conductor</p>
-      </div>
-    );
-  }
 
-  const { forename, surname } = driver.name;
+let foreName;
+let surName;
+  if(driver.name){
+    const { forename, surname } = driver.name;
+    foreName = forename;
+    surName = surname;
+  } else {
+    foreName = driver.forename;
+    surName = driver.surname;
+  }
 
   console.log(driver);
   return (
-    <div>
+    <div className={styles.error}>
       <NavBar />
-      <div className={styles.container}>
+      {!driver.id ?  <div className={styles.error}>
+        <p>No se encontro el conductor</p>
+      </div> :  <div className={styles.container}>
         <div className={styles.info}>
           <h3>ID: {driver.id}</h3>
           <h3>Nationality: {driver.nationality}</h3>
@@ -75,10 +91,11 @@ const Detail = () => {
         <div className={styles.dni}>
           <img src={driver.image} className={styles.img} />
           <h2>
-            {forename} {surname}
+            {foreName} {surName}
           </h2>
         </div>
-      </div>
+      </div>}
+     
     </div>
   );
 };

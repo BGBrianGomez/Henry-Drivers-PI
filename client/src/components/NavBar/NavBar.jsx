@@ -70,8 +70,8 @@ const handleHomeButton = () =>{
           </option>
           <option value="A-Z">A-Z</option>
           <option value="Z-A">Z-A</option>
-          <option value="dobA">Dob(Asc)</option>
-          <option value="dobD">Dob(Desc)</option>
+          <option value="dobA">D.O.B(Asc)</option>
+          <option value="dobD">D.O.B(Desc)</option>
         </select>
       </div>
     </div>

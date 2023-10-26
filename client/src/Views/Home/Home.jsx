@@ -4,6 +4,7 @@ import { getAllDrivers, getTeams } from "../../Redux/Actions/actions";
 import Cards from "../../components/Cards/Cards";
 import NavBar from "../../components/NavBar/NavBar";
 import Paginado from "../../components/Paginado/Paginado";
+import styles from "./Home.module.css"
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -32,7 +33,7 @@ useEffect(()=>{
 
   window.scrollTo(0, 0);
   return (
-    <div>
+    <div className={styles.homeContainer}>
       <div>
         <NavBar />
       </div>
