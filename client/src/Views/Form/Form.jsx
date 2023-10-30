@@ -44,6 +44,7 @@ const Form = () => {
     image: null,
   });
   const [formValid, setFormValid] = useState(false);
+  const [success, setSuccess] = useState(false);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -74,7 +75,6 @@ const Form = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(addDriver(driver));
-    console.log("SUBMIT", driver);
     setDriver({
       forename: "",
       surname: "",
@@ -85,7 +85,7 @@ const Form = () => {
       image: "",
       createdinDB: true,
     });
-    navigate("/home");
+    setSuccess(true);
   };
 
   const handleTeamSelection = (e) => {
@@ -230,7 +230,16 @@ const Form = () => {
             </button>
           </div>
         </div>
+
+    
+       
       </form>
+     {success && <div className={styles.modalContainer}>
+        <dialog open={success} className={styles.successBtn}>
+          <p>Driver created successfully!!</p>
+          <button onClick={()=> navigate("/home")}>Return to home</button>
+        </dialog>
+        </div>}
     </div>
   );
 };

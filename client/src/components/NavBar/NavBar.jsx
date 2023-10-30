@@ -33,7 +33,7 @@ const handleHomeButton = () =>{
 }
 
   return (
-    <div className={styles.totalConteiner}>
+    <navbar className={styles.totalConteiner}>
       <img src={logof1} className={styles.img}/>
       <Link to="/home">
         <button onClick={handleHomeButton} >Home</button>
@@ -74,7 +74,7 @@ const handleHomeButton = () =>{
           <option value="dobD">D.O.B(Desc)</option>
         </select>
       </div>
-    </div>
+    </navbar>
   );
 };
 

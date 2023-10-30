@@ -1,5 +1,5 @@
 import {Link} from "react-router-dom";
-import styles from "./Cards.module.css"
+import styles from "./Card.module.css"
 
 const Card = ({driver})=>{
 
