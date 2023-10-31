@@ -34,22 +34,23 @@ const getAllDrivers = async (name) => {
   allDrivers = [...allDriversApi, ...allDriversDB];
 
   if (name && name !== undefined) {
-    let driversByName = allDrivers.filter((driver) => 
- driver.forename.toLowerCase().startsWith(name.toLowerCase()));
+    let driversByName = allDrivers.filter((driver) =>
+      driver.forename.toLowerCase().startsWith(name.toLowerCase())
+    );
 
- let driversBySurName = allDrivers.filter((driver) => 
- driver.surname.toLowerCase().startsWith(name.toLowerCase()));
-
+    let driversBySurName = allDrivers.filter((driver) =>
+      driver.surname.toLowerCase().startsWith(name.toLowerCase())
+    );
 
     if (driversByName.length) {
-        return driversByName.slice(0, 15);
+      return driversByName.slice(0, 15);
     } else if (driversBySurName.length) {
-      return driversBySurName.slice(0,15)
+      return driversBySurName.slice(0, 15);
     } else {
-      throw new Error(`No se encontro por el nombre: ${name}`);
+      throw new Error(`
+      Not found by name: ${name}`);
     }
-} 
-
+  }
 
   return allDrivers;
 };
