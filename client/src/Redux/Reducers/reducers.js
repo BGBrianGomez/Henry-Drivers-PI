@@ -28,14 +28,11 @@ const reducer = (state = initialState, action) => {
     case FILTER_ORIGIN:
       const origin = action.payload;
       const drivers = state.allDrivers;
-
-
       
       const filtered =
         origin === "database"
           ? drivers.filter((driver) => driver.createdinDB === true)
           : drivers.filter((driver) => driver.createdinDB === false);
-      console.log("filtered", filtered);
       return {
         ...state,
         filtredDrivers: origin === "all" ? state.allDrivers : filtered,

@@ -35,7 +35,6 @@ export const getAllDrivers = () => {
 };
 
 export const filterOrigin = (option) => {
-  // all, database, API
   return function (dispatch) {
     try {
       dispatch({

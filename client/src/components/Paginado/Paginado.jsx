@@ -1,14 +1,13 @@
 import React from "react";
-import styles from "./Paginado.module.css"
+import styles from "./Paginado.module.css";
 
-const Paginado = ({allDrivers,driverPerPage,paginado, currentPage})=>{
+const Paginado = ({ allDrivers, driverPerPage, paginado, currentPage }) => {
+  const pageNumbers = [];
 
-const pageNumbers = [];
-
-for(let i = 1;i<=Math.ceil(allDrivers.length/driverPerPage); i++){
-    pageNumbers.push(i)
-}
-const pagesToShow = 3;
+  for (let i = 1; i <= Math.ceil(allDrivers.length / driverPerPage); i++) {
+    pageNumbers.push(i);
+  }
+  const pagesToShow = 3;
 
   let startPage = Math.max(1, currentPage - Math.floor(pagesToShow / 2));
   let endPage = Math.min(
@@ -33,15 +32,15 @@ const pagesToShow = 3;
         </button>
       )}
 
-      {visiblePageNumbers.map((numerito) => (
+      {visiblePageNumbers.map((number) => (
         <button
-          key={numerito}
-          onClick={() => paginado(numerito)}
+          key={number}
+          onClick={() => paginado(number)}
           className={`${styles["paginado-button"]} ${
-            numerito === currentPage ? styles["current-page"] : ""
+            number === currentPage ? styles["current-page"] : ""
           }`}
         >
-          {numerito}
+          {number}
         </button>
       ))}
 
@@ -55,7 +54,6 @@ const pagesToShow = 3;
       )}
     </div>
   );
-      }
-
+};
 
 export default Paginado;

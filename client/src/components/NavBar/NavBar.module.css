@@ -1,72 +1,68 @@
-.totalConteiner{
-    flex-direction: row;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0px;
-    background-color: #161A1D;
-    width: 100%;
-min-width: 98.7vw;
-    border-bottom: 2px solid #B71C1C;
-    margin: 0px;
+.totalConteiner {
+  flex-direction: row;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0px;
+  background-color: #161a1d;
+  width: 100%;
+  min-width: 98.7vw;
+  border-bottom: 2px solid #b71c1c;
+  margin: 0px;
 }
 
-.img{
-    width: 70px;
+.img {
+  width: 70px;
   height: auto;
   margin-right: 5px;
   margin-left: 10px;
 }
 
 .totalConteiner select {
-    margin: 0 10px;
-  }
+  margin: 0 10px;
+}
 
-  .totalConteiner button {
-    text-decoration: none;
-    margin: 0 10px;
-    background-color: #161A1D;
-    color: #fff; 
-    border: none;
-    border-radius: 5px;
-    padding: 10px; 
-    transition: all 0.1s ease; 
-  }
-  
-  /* Cambia el color de fondo al hacer hover */
-  .totalConteiner button:hover {
-    background-color: #0B090A; /* Fondo en tono más oscuro al hacer hover */
-    border: 2px solid #B71C1C; /* Restaura el borde en estado hover */
-  }
-  
-  /* Estilo cuando el botón está enfocado */
-  .totalConteiner button:focus {
-    outline:black; /* Elimina el borde de enfoque predeterminado */
-    border: 2px solid #FF1744; /* Borde en tono rojo más brillante al enfocar */
-    color: #FF1744; /* Texto en tono rojo más brillante al enfocar */
-  }
+.totalConteiner button {
+  text-decoration: none;
+  margin: 0 10px;
+  background-color: #161a1d;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+  transition: all 0.1s ease;
+}
 
-  .totalConteiner select {
-    background-color: #161A1D; /* Fondo en tono gris oscuro */
-    color: #fff; /* Color del texto en blanco */
-    border: 2px solid #EE0000; /* Borde en un tono de rojo más oscuro */
-    border-radius: 5px; /* Bordes redondeados */
-    padding: 8px; /* Relleno interno para aumentar el tamaño */
-    width: 200px; /* Ancho fijo (ajústalo según tus necesidades) */
-    transition: all 0.3s ease; /* Efecto de transición suave */
-  }
-  
-  .totalConteiner select::selection {
-    background-color: #161A1D; /* Cambia el color de fondo de la selección a #161A1D */
-  }
+.totalConteiner button:hover {
+  background-color: #0b090a;
+  border: 2px solid #b71c1c;
+}
 
-  /* Cambia el color de fondo al hacer hover */
-  .totalConteiner select:hover {
-    background-color: #0B090A; /* Fondo en tono más oscuro al hacer hover */
-  }
-  
-  /* Estilo cuando el select está enfocado */
-  .totalConteiner select:focus {
-    outline: none; /* Elimina el borde de enfoque predeterminado */
-    border: 2px solid #FF1744; /* Borde en tono rojo más brillante al enfocar */
-  }
+.totalConteiner button:focus {
+  outline: black;
+  border: 2px solid #ff1744;
+  color: #ff1744;
+}
+
+.totalConteiner select {
+  background-color: #161a1d;
+  color: #fff;
+  border: 2px solid #ee0000;
+  border-radius: 5px;
+  padding: 8px;
+  width: 200px;
+  transition: all 0.3s ease;
+}
+
+.totalConteiner select::selection {
+  background-color: #161a1d;
+}
+
+.totalConteiner select:hover {
+  background-color: #0b090a;
+}
+
+.totalConteiner select:focus {
+  outline: none;
+  border: 2px solid #ff1744;
+}

@@ -1,11 +1,9 @@
 import { getByName } from "../../Redux/Actions/actions";
 import { useDispatch } from "react-redux";
 import styles from "../SearchBar/Search.module.css"
-// import { useState } from "react";
 
 const SearchBar = ()=>{
     const dispatch = useDispatch()
-    // const [query, setQuery] = useState('');
 
     const handleInputChange = (e) => {
         let name = e.target.value

@@ -68,7 +68,6 @@ const Form = () => {
     }
 
     setError({ ...error, [name]: errorMessage });
-    console.log("error", error);
     validateForm();
   };
 
@@ -110,7 +109,7 @@ const Form = () => {
         console.log("error en teams", error);
       }
     }
-    validateForm()
+    validateForm();
   };
 
   const validateForm = () => {
@@ -126,9 +125,6 @@ const Form = () => {
     }
   };
 
-  console.log("valid", formValid);
-
-  console.log("driver", driver);
 
   return (
     <div key="">
@@ -138,7 +134,7 @@ const Form = () => {
       <form key={"add-driver-form"} onSubmit={handleSubmit}>
         <div className={styles["form-container"]}>
           <div>
-            <div className={styles.inputsIzq}>
+            <div >
               <input
                 key={"driver-forename"}
                 type="text"
@@ -168,7 +164,7 @@ const Form = () => {
               />
               {error.dob && <div className="error">{error.dob}</div>}
             </div>
-            <div className={styles.inputsDer}>
+            <div >
               <input
                 key={"driver-description"}
                 type="text"
@@ -230,16 +226,15 @@ const Form = () => {
             </button>
           </div>
         </div>
-
-    
-       
       </form>
-     {success && <div className={styles.modalContainer}>
-        <dialog open={success} className={styles.successBtn}>
-          <p>Driver created successfully!!</p>
-          <button onClick={()=> navigate("/home")}>Return to home</button>
-        </dialog>
-        </div>}
+      {success && (
+        <div className={styles.modalContainer}>
+          <dialog open={success} className={styles.successBtn}>
+            <p>Driver created successfully!!</p>
+            <button onClick={() => navigate("/home")}>Return to home</button>
+          </dialog>
+        </div>
+      )}
     </div>
   );
 };

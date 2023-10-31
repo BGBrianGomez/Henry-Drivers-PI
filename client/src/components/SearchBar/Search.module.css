@@ -1,21 +1,21 @@
 .search{
-    background-color: #161A1D; /* Fondo en tono rojo */
-    border: 2px solid #EE0000; /* Borde en un tono de rojo más oscuro */
-    color: #EE0000; /* Texto en un tono de rojo más oscuro */
-    border-radius: 5px; /* Bordes redondeados */
-    padding: 8px; /* Relleno interno */
-    width: 200px; /* Ancho fijo (ajústalo según tus necesidades) */
+    background-color: #161A1D; 
+    border: 2px solid #EE0000; 
+    color: #EE0000;
+    border-radius: 5px; 
+    padding: 8px; 
+    width: 200px;
     transition: all 0.3s ease;
   }
 .search::placeholder {
-    color: #ffffff; /* Color del texto de marcador de posición en tono de rojo más oscuro */
-    opacity: 0.7; /* Opacidad del texto de marcador de posición */
+    color: #ffffff; 
+    opacity: 0.7;
   }
   
 .search:focus {
-    outline: none; /* Elimina el borde de enfoque predeterminado */
-    border: 2px solid #EE0000; /* Borde en tono rojo más brillante al enfocar */
-    color: #fff; /* Texto en tono rojo más brillante al enfocar */
+    outline: none; 
+    border: 2px solid #EE0000;
+    color: #fff; 
   }
 
   
