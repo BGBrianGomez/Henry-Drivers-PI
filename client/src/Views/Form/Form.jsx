@@ -106,7 +106,6 @@ const Form = () => {
         selectedTeamsRef.pop();
         selectedTeamsRef = selectedTeamsRef.join(",");
         setShowTeams(selectedTeamsRef);
-        console.log("error en teams", error);
       }
     }
     validateForm();
@@ -122,6 +121,8 @@ const Form = () => {
       error.image === ""
     ) {
       setFormValid(true);
+    } else {
+      setFormValid(false)
     }
   };
 

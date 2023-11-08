@@ -31,7 +31,7 @@ const Home = () => {
   return (
     <div className={styles.homeContainer}>
       <div>
-        <NavBar />
+        <NavBar setCurrentPage={setCurrentPage}/>
       </div>
       <div>
         <Cards drivers={currentDrivers} />

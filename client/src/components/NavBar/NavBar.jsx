@@ -9,7 +9,7 @@ import SearchBar from "../SearchBar/SearchBar";
 import styles from "./NavBar.module.css";
 import logof1 from "../../assets/logof1.png";
 
-const NavBar = () => {
+const NavBar = ({setCurrentPage}) => {
   const dispatch = useDispatch();
 
   const teams = useSelector((state) => state.allTeams);
@@ -17,16 +17,19 @@ const NavBar = () => {
   const filter = (e) => {
     const option = e.target.value;
     dispatch(filterOrigin(option));
+    setCurrentPage(1)
   };
 
   const order = (e) => {
     const option = e.target.value;
     dispatch(orderDrivers(option));
+    setCurrentPage(1)
   };
 
   const teamsFilter = (e) => {
     const option = e.target.value;
     dispatch(filterByTeam(option));
+    setCurrentPage(1)
   };
 
   const handleHomeButton = () => {
