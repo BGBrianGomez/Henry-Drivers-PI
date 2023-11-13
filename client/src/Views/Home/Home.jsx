@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllDrivers, getTeams } from "../../Redux/Actions/actions";
+import Loading from "../../assets/Loading.gif"
 import Cards from "../../components/Cards/Cards";
 import NavBar from "../../components/NavBar/NavBar";
 import Paginado from "../../components/Paginado/Paginado";
@@ -34,7 +35,7 @@ const Home = () => {
         <NavBar setCurrentPage={setCurrentPage}/>
       </div>
       <div>
-        <Cards drivers={currentDrivers} />
+        { currentDrivers.length ? <Cards drivers={currentDrivers} /> : <img src={Loading} /> }
       </div>
       <div>
         <Paginado
